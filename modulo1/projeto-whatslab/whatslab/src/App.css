@@ -1,8 +1,8 @@
 .App {
   text-align: center;
 }
-
-/* .chat-window{
+/*----------------------chatwindow css -------------------*/
+/*  .chat-window{
   margin: auto;
   width: 80vw;
   height: 80vh;
@@ -14,29 +14,25 @@
   box-sizing: border-box;
   background-image: url(images/wallpaper.jpg);
   overflow: auto;
-}
+} 
 
-.baloesDeMensagem{
+ .baloesDeMensagem{
   display: inline-block;
   background-color: white;
   font-size: 12px;
-}
+} */
 
-p .userMessage{
-  font-size: 1rem;
-}
-
-.userMessage{
-  font-size: 2rem;
-}
-
-li{
+/* li{
   list-style: none;
   width: 40vw;
   margin: 1rem;
-} */
+}  
+ */
 
-.input-container{
+/*-----------------INPUT CONTAINER CSS---------------------*/
+
+/* 
+ .input-container{
   margin: auto;
   width: 80vw;
   height: 20vh;
@@ -64,4 +60,4 @@ button{
   height: 5vh;
   width: 10vw;
 
-}
+} */

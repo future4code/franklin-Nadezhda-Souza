@@ -1,47 +1,50 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const chatWindow = styled.div`
+//---------------------PROBLEMAS COM STYLED COMPONENTS------------------------//
+
+const JanelaDoChat = styled.div `
     margin: auto;
-    width: 80vw;
-    height: 80vh;
+    width: 70vw;
+    height: 90vh;
     border-color: black;
     border-style: solid;
     border-width: 1px;
     padding: 5vw;
     text-align: left;
     box-sizing: border-box;
-    background-image: url(images/wallpaper.jpg);
+    background-image: url("https://i.pinimg.com/564x/15/1f/a5/151fa57376e2212b8e7a642ed631a25e.jpg");
+    background-size: cover;
     overflow: auto;
 `
 
 const BaloesDeMensagem = styled.ul`
     display: inline-block;
-    background-color: white;
     font-size: 12px;
-`
 
-export function ChatWindow(props){
+    .eu{
+        list-style: none;
+        width: 40vw;
+        margin: 1rem;
+        background-color: #DDF7C8;
+    } 
+
+    .fulano{
+        list-style: none;
+        width: 40vw;
+        margin: 1rem;
+        background-color: #ffffff;
+    }
+
+` 
+
+
+export function ChatWindow(){
     return(
-        <ChatWindow>
-            <BaloesDeMensagem>
+        <JanelaDoChat>
+            <BaloesDeMensagem className='baloesDeMensagem'>
             </BaloesDeMensagem>
-        </ChatWindow>
+        </JanelaDoChat>
     )
-}
-
-/* export function BalaoDeMensagemContainer(props){
-    return(
-        <ul className="balaoDeMensagem">
-        </ul>
-    )
-} */
-
-/* export function BalaoDeMensagem(props){
-    return(
-        <li>
-            <p>{props.user}</p>
-            <p>{props.message}</p>
-        </li>
-    )
-} */
+} 
+ 

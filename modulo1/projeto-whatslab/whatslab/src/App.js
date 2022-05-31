@@ -5,8 +5,8 @@ import { InputContainer } from './components/input-container';
 function App() {
   return (
     <div className="App">
-      <ChatWindow/>
-      <InputContainer/>
+      <ChatWindow></ChatWindow>
+      <InputContainer></InputContainer>
     </div>
   );
 }
