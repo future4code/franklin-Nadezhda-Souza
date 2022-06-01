@@ -3,28 +3,34 @@ import styled from 'styled-components';
 
  const InputContainerDiv = styled.div`
     margin: auto;
-    width: 70vw;
+    width: 60vw;
     height: 10vh;
-    border-color: black;
-    border-style: solid;
-    border-width: 1px;
-    text-align: left;
     box-sizing: border-box;
     display: flex;
-    justify-content: space-around;
-    padding-top: 7.5vh;    
+    justify-content: space-around;  
+    display: flex;
+    align-items:center; 
+    background-color: GhostWhite;
  `
 
   const InputUser = styled.input`
     width: 15vw;
     height: 5vh;
     box-sizing: border-box;
+    border-radius: 0.5rem;
+    border: none;
+    text-align: center;
+    background-color: white;
   `
 
   const InputMessege = styled.input`
     width: 40vw;
     height: 5vh;
     box-sizing: border-box;
+    border-radius: 0.5rem;
+    border: none;
+    text-align: center;
+    background-color: white;
   `
  
   const Button = styled.button`
