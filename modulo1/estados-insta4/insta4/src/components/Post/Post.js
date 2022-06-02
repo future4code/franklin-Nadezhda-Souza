@@ -101,7 +101,7 @@ function Post(props){
 
   return(
     <div>
-          <PostContainer>
+      <PostContainer>
       <PostHeader>
         <UserPhoto src={props.fotoUsuario} alt={'Imagem do usuario'}/>
         <p>{props.nomeUsuario}</p>
