@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { InputContainer } from './input-container';
 
-const JanelaDoChat = styled.div `
+/* const JanelaDoChat = styled.div `
     margin: auto;
     width: 60vw;
     height: 80vh;
@@ -40,14 +41,15 @@ const BaloesDeMensagem = styled.ul`
         border-radius: 0.5rem;
     }
 
-` 
+`  */
 
-export function ChatWindow(){
+/* export function ChatWindow(){
     return(
         <JanelaDoChat>
             <BaloesDeMensagem className='baloesDeMensagem'>
+                {listaDeMensagens}
             </BaloesDeMensagem>
         </JanelaDoChat>
     )
-} 
+}  */
  

@@ -51,3 +51,38 @@ export function ChatWindow(props){
     )
 } 
  */
+
+
+
+/*----------input container --------------*/
+/* function sendMessage(){
+    const janela = document.querySelector(".baloesDeMensagem");
+    const usuario = document.querySelector("#input-user").value;
+    const mensagem = document.querySelector("#input-message").value;
+    const nome = usuario.toLowerCase();
+
+    if(!usuario || !mensagem){
+      alert("insira uma mensagem");
+    } else if( nome === "eu" ){
+      let historico = janela.innerHTML;
+      historico += `<li class='eu'>${mensagem}</li>`;
+      janela.innerHTML = historico;
+    } else {
+      let historico = janela.innerHTML;
+      historico += `<div class='fulano'><li>${usuario}</li> <li> ${mensagem}</li></div>`;
+      janela.innerHTML = historico;
+    }
+
+    /*document.querySelector("#input-user").value = null ;
+    document.querySelector("#input-message").value = null; */
+/*   }
+
+  export function InputContainer(props){
+    return(
+        <InputContainerDiv>
+          <InputUser type="text" id="input-user" placeholder="usuário"/>
+          <InputMessege type="text" id="input-message" placeholder="mensagem"/>
+          <Button onClick={sendMessage} type="submit"></Button>
+        </InputContainerDiv>
+    )
+  } */ 
