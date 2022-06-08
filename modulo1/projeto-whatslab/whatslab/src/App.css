@@ -1,0 +1,63 @@
+.App {
+  text-align: center;
+}
+/*----------------------chatwindow css -------------------*/
+/*  .chat-window{
+  margin: auto;
+  width: 80vw;
+  height: 80vh;
+  border-color: black;
+  border-style: solid;
+  border-width: 1px;
+  padding: 5vw;
+  text-align: left;
+  box-sizing: border-box;
+  background-image: url(images/wallpaper.jpg);
+  overflow: auto;
+} 
+
+ .baloesDeMensagem{
+  display: inline-block;
+  background-color: white;
+  font-size: 12px;
+} */
+
+/* li{
+  list-style: none;
+  width: 40vw;
+  margin: 1rem;
+}  
+ */
+
+/*-----------------INPUT CONTAINER CSS---------------------*/
+
+/* 
+ .input-container{
+  margin: auto;
+  width: 80vw;
+  height: 20vh;
+  border-color: black;
+  border-style: solid;
+  border-width: 1px;
+  text-align: left;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-around;
+  padding-top: 7.5vh;
+}
+
+#input-user{
+  width: 20vw;
+  height: 5vh;
+}
+
+#input-message{
+  width: 45vw;
+  height: 5vh;
+}
+
+button{
+  height: 5vh;
+  width: 10vw;
+
+} */
