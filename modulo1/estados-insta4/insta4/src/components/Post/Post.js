@@ -47,7 +47,7 @@ function Post(props){
     numeroCurtidas: 0,
     comentando: false,
     numeroComentarios: 0,
-    inputcomentario: 'input1'
+    inputcomentario: false
   })
 
   const [numeroCurtidas, setnumeroCurtidas] = useState(0)
@@ -81,7 +81,6 @@ function Post(props){
     console.log(inputComentario)
   }
 
-  //não funciona
   const handleInputComentario = (event) => {
     setinputComentario(event.target.value)
   }
@@ -101,7 +100,8 @@ function Post(props){
     }
 
   return(
-    <PostContainer>
+    <div>
+      <PostContainer>
       <PostHeader>
         <UserPhoto src={props.fotoUsuario} alt={'Imagem do usuario'}/>
         <p>{props.nomeUsuario}</p>
@@ -124,6 +124,7 @@ function Post(props){
       </PostFooter>
       {componenteComentario}
     </PostContainer>
+    </div>
   )
 }
 
