@@ -1,9 +1,11 @@
+import { Router } from "./routes/Router";
 import React from "react";
+
 
 function App() {
   return (
     <div>
-    <p>Cookenu</p>
+      <Router/>
     </div>
   );
 }
