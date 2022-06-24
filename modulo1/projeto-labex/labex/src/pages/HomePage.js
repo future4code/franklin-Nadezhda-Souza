@@ -2,6 +2,8 @@
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 import axios from 'axios';
+import { useNavigate } from "react-router-dom"
+import { goToApplication } from '../routes/coordinator'
 
 const HomePage__travels = styled.ul`
     list-style: none;
@@ -23,6 +25,7 @@ const HomePage__btn = styled.button`
 
 export default function HomePage() {
     const [viagens, setViagens] = useState([]);
+    const navigate = useNavigate();
 
     const getTrips = () => {
         axios.get(   //requisição que retorna todas as viagens
@@ -33,7 +36,7 @@ export default function HomePage() {
             console.log(error.response.data)
         });
     }
-    
+
     useEffect(getTrips, []);
 
     return(
@@ -54,7 +57,7 @@ export default function HomePage() {
                     )
                 })}
             </HomePage__travels>
-            <HomePage__btn>Inscrever-se</HomePage__btn>
+            <HomePage__btn onClick={() => goToApplication(navigate) }>Inscrever-se</HomePage__btn>
         </div>
     )
 }
