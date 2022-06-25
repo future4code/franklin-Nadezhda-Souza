@@ -6,6 +6,7 @@ import { theme } from "./constants/theme";
 //--------------------------notes--------------------------//
 //         parei na parte 4
 //         usei o navegate no coordinator
+//         a barra de navegação ta 100% bugada
 
 function App() {
   return (

@@ -1,19 +1,21 @@
-const goToLogin = (navigate) => {
+import React from "react"
+
+export const goToLogin = (navigate) => {
     navigate("/login")
 }
 
-const goToSignUp = (navigate) => {
+export const goToSignUp = (navigate) => {
     navigate("/cadastro")
 }
 
-const goToRecipesList = (navigate) => {
+export const goToRecipesList = (navigate) => {
     navigate("/")
 }
 
-const goToAddRecipes = (navigate) => {
+export const goToAddRecipes = (navigate) => {
     navigate("adicionar-receita")
 }
 
-const goToRecipeDetail = (navigate) => {
-    navigate(`/detalhe/${id}`)
+export const goToRecipeDetail = (navigate) => {
+    navigate("/detalhe")
 }
