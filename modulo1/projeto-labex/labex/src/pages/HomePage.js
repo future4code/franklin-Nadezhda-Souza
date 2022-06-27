@@ -1,22 +1,22 @@
 //Para o usuário escolher entre Área Administrativa e Lista de Viagens
 import styled from "styled-components";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom"
 import { goToApplication } from '../routes/coordinator'
 
-const HomePage__travels = styled.ul`
+const HomePageTravels = styled.ul`
     list-style: none;
     margin: 0;
     padding: 0;
 `
-const HomePage__travel = styled.li`
+const HomePageTravel = styled.li`
     border: solid;
     border-width: 1px;
     margin: 1rem;
 `
 
-const HomePage__btn = styled.button`
+const HomePageBtn = styled.button`
     height: 2rem;
     margin: 1rem;
     background-color: transparent;
@@ -42,10 +42,10 @@ export default function HomePage() {
     return(
         <div>
             <h1>Lista de Viagens</h1>
-            <HomePage__travels>
+            <HomePageTravels>
                 {viagens.map((viagem) => {
                     return (
-                        <HomePage__travel key={viagem.id}>
+                        <HomePageTravel key={viagem.id}>
                             <h2>{viagem.name}</h2>
                             <p> 
                                 Planeta: {viagem.planet} <br/>
@@ -53,11 +53,11 @@ export default function HomePage() {
                                 Data: {viagem.date} <br/>
                                 Duração (dias): {viagem.durationInDays}
                             </p>
-                        </HomePage__travel>
+                        </HomePageTravel>
                     )
                 })}
-            </HomePage__travels>
-            <HomePage__btn onClick={() => goToApplication(navigate) }>Inscrever-se</HomePage__btn>
+            </HomePageTravels>
+            <HomePageBtn onClick={() => goToApplication(navigate)}>Inscrever-se</HomePageBtn>
         </div>
     )
 }

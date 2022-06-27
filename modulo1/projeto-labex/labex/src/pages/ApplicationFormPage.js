@@ -1,14 +1,16 @@
 //Para o usuário se candidatar à viagens, página que vai ter o formulário de inscrição
 import styled from "styled-components" 
 import axios from "axios"
-import { useState } from "react"
+import React, { useState } from "react"
+import { useNavigate } from "react-router-dom"
+import { goToLastPage } from "../routes/coordinator"
 
 const ApplicationForm = styled.div`
     text-align: center;
     margin: auto;
 `
 
-const ApplicationForm__container = styled.div`
+const ApplicationFormContainer = styled.div`
     display: flex;
     flex-direction: column;
     width: 50%;
@@ -16,7 +18,7 @@ const ApplicationForm__container = styled.div`
     align-items: center;
 `
 
-const ApplicationForm__input = styled.input`
+const ApplicationFormInput = styled.input`
     width: 100%;
     height: 2rem;
     margin: 1rem 0;
@@ -24,7 +26,7 @@ const ApplicationForm__input = styled.input`
     text-align: center;
     box-sizing: border-box;
 `
-const ApplicationForm__buttons = styled.div`
+const ApplicationFormButtons = styled.div`
     width: 50%;
     display: flex;
     justify-content: space-around;
@@ -32,7 +34,7 @@ const ApplicationForm__buttons = styled.div`
     margin-top: 2rem;
 `
 
-const ApplicationForm__btn = styled.button`
+const ApplicationFormBtn = styled.button`
     background-color: transparent;
     height: 2rem;
     width: 7rem;
@@ -46,6 +48,7 @@ export default function ApplicationFormPage (){
     const [messageValue, setMessageValue] = useState('');
     const [professionValue, setProfessionValue] = useState('');
     const [countryValue, setCountryValue] = useState('');
+    const navigate = useNavigate();
 
     const applyToTrip = () => {
         const body = {
@@ -62,44 +65,45 @@ export default function ApplicationFormPage (){
             console.log(response.data)
         }).catch((error) => {
             console.log(error.response.data)
+            alert('Erro ao enviar! :(');
         });
     }
 
     return(
         <ApplicationForm>
             <h1>Inscreva-se</h1>
-            <ApplicationForm__container>
-                <ApplicationForm__input 
+            <ApplicationFormContainer>
+                <ApplicationFormInput 
                 value={nameValue} 
                 onChange={(e) => {setNameValue(e.target.value)}}
                 placeholder="Nome"
                 />
-                <ApplicationForm__input 
+                <ApplicationFormInput 
                 value={ageValue} 
                 onChange={(e) => {setAgeValue(e.target.value)}}
                 placeholder="Idade
                 "/>
-                <ApplicationForm__input 
+                <ApplicationFormInput 
                 value={messageValue} 
                 onChange={(e) => {setMessageValue(e.target.value)}}
                 placeholder="Mensagem"
                 />
-                <ApplicationForm__input 
+                <ApplicationFormInput 
                 value={professionValue} 
                 onChange={(e) => {setProfessionValue(e.target.value)}}
                 placeholder="Profissão"
                 />
-                <ApplicationForm__input 
+                <ApplicationFormInput 
                 value={countryValue}
                 onChange={(e) => {setCountryValue(e.target.value)}}
                 placeholder="País"
                 />
-            </ApplicationForm__container>
+            </ApplicationFormContainer>
             
-            <ApplicationForm__buttons>
-                <ApplicationForm__btn>Voltar</ApplicationForm__btn>
-                <ApplicationForm__btn onClick={applyToTrip}>Enviar</ApplicationForm__btn>
-            </ApplicationForm__buttons>
+            <ApplicationFormButtons>
+                <ApplicationFormBtn onClick={() => goToLastPage(navigate)}>Voltar</ApplicationFormBtn>
+                <ApplicationFormBtn onClick={applyToTrip}>Enviar</ApplicationFormBtn>
+            </ApplicationFormButtons>
         </ApplicationForm>
     )
 }

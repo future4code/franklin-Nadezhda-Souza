@@ -1,15 +1,18 @@
 //Para o administrador ver a lista de viagens e poder deletá-las ou acessar o detalhe de cada uma delas
 import styled from "styled-components";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
+import { goToLastPage } from "../routes/coordinator";
+import { goToCreate } from "../routes/coordinator";
 
-const AdminHomePage__travels = styled.ul`
+const AdminHomePageTravels = styled.ul`
     list-style: none;
     margin: 0;
     padding: 0;
 `
 
-const AdminHomePage__travel = styled.div`
+const AdminHomePageTravel = styled.div`
     margin: auto;
     margin-bottom: 2rem;
     width: 50%;
@@ -22,7 +25,7 @@ const AdminHomePage__travel = styled.div`
 
 `
 
-const AdminHomePage__btn = styled.button`
+const AdminHomePageBtn = styled.button`
     height: 2rem;
     width: 7rem;
     margin: 1rem;
@@ -30,7 +33,7 @@ const AdminHomePage__btn = styled.button`
     border-radius: 1rem;
 `;
 
-const AdminHomePage__buttons = styled.div`
+const AdminHomePageButtons = styled.div`
     width: 50%;
     display: flex;
     justify-content: space-around;
@@ -40,6 +43,7 @@ const AdminHomePage__buttons = styled.div`
 
 export default function AdminHomePage() {
     const [viagens, setViagens] = useState([]);
+    const navigate = useNavigate();
 
     const getTrips = () => {
         axios.get(   //requisição que retorna todas as viagens
@@ -56,21 +60,21 @@ export default function AdminHomePage() {
     return(
         <div>
             <h1>Lista de Viagens</h1>
-            <AdminHomePage__travels>
+            <AdminHomePageTravels>
                 {viagens.map((viagem) => {
                     return (
-                        <AdminHomePage__travel>
+                        <AdminHomePageTravel>
                             <li key={viagem.id}>{viagem.name}</li>
                             <button>X</button>
-                        </AdminHomePage__travel>
+                        </AdminHomePageTravel>
                         
                     )   
                 })}
-            </AdminHomePage__travels>
-            <AdminHomePage__buttons>
-                <AdminHomePage__btn>Voltar</AdminHomePage__btn>
-                <AdminHomePage__btn>Criar Viagem</AdminHomePage__btn>
-            </AdminHomePage__buttons>
+            </AdminHomePageTravels>
+            <AdminHomePageButtons>
+                <AdminHomePageBtn onClick={() => {goToLastPage(navigate)}}>Voltar</AdminHomePageBtn>
+                <AdminHomePageBtn onClick={()=> {goToCreate(navigate)}}>Criar Viagem</AdminHomePageBtn>
+            </AdminHomePageButtons>
         </div>
     )
 }

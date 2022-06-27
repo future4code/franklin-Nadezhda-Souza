@@ -1,12 +1,15 @@
 //Formulário para o administrador criar uma nova viagem
 import styled from "styled-components" 
+import { useNavigate } from "react-router-dom"
+import { goToLastPage } from "../routes/coordinator"
+import { goToCreate } from "../routes/coordinator"
 
 const CreateTrip = styled.div`
     text-align: center;
     margin: auto;
 `
 
-const CreateTrip__container = styled.div`
+const CreateTripContainer = styled.div`
     display: flex;
     flex-direction: column;
     width: 50%;
@@ -14,7 +17,7 @@ const CreateTrip__container = styled.div`
     align-items: center;
 `
 
-const CreateTrip__input = styled.input`
+const CreateTripInput = styled.input`
     width: 100%;
     height: 2rem;
     margin: 1rem 0;
@@ -22,7 +25,7 @@ const CreateTrip__input = styled.input`
     text-align: center;
     box-sizing: border-box;
 `
-const CreateTrip__buttons = styled.div`
+const CreateTripButtons = styled.div`
     width: 50%;
     display: flex;
     justify-content: space-around;
@@ -30,7 +33,7 @@ const CreateTrip__buttons = styled.div`
     margin-top: 2rem;
 `
 
-const CreateTrip__btn = styled.button`
+const CreateTripBtn = styled.button`
     background-color: transparent;
     height: 2rem;
     width: 7rem;
@@ -39,21 +42,23 @@ const CreateTrip__btn = styled.button`
 
 
 export default function CreateTripPage (){
+    const navigate = useNavigate();
+
     return(
         <CreateTrip>
             <h1>Criar Viagem</h1>
-            <CreateTrip__container>
-                <CreateTrip__input placeholder="Nome"/>
-                <CreateTrip__input placeholder="Planeta"/>
-                <CreateTrip__input placeholder="Data"/>
-                <CreateTrip__input placeholder="Descrição"/>
-                <CreateTrip__input placeholder="Duração em dias"/>
-            </CreateTrip__container>
+            <CreateTripContainer>
+                <CreateTripInput placeholder="Nome"/>
+                <CreateTripInput placeholder="Planeta"/>
+                <CreateTripInput placeholder="Data"/>
+                <CreateTripInput placeholder="Descrição"/>
+                <CreateTripInput placeholder="Duração em dias"/>
+            </CreateTripContainer>
             
-            <CreateTrip__buttons>
-                <CreateTrip__btn>Voltar</CreateTrip__btn>
-                <CreateTrip__btn>Criar Viagem</CreateTrip__btn>
-            </CreateTrip__buttons>
+            <CreateTripButtons>
+                <CreateTripBtn onClick={() => goToLastPage(navigate)}>Voltar</CreateTripBtn>
+                <CreateTripBtn onClick={() => {goToCreate(navigate)}}>Criar Viagem</CreateTripBtn>
+            </CreateTripButtons>
         </CreateTrip>
     )
 }

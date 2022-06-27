@@ -1,25 +1,26 @@
 //Arquivo que concentra as funções de navegação
+import React from 'react'
 
 export const goToHome = (navigate) => {
-    navigate("/")
+    navigate("/");
 }
 
 export const goToApplication = (navigate) => {
-    navigate("/application")
+    navigate("/application");
 }
 
 export const goToLogin = (navigate) => {
-    navigate("/login")
+    navigate("/login");
 }
 
 export const goToAdmin = (navigate) => {
-    navigate("/admin")
+    navigate("/admin");
 }
 
 export const goToCreate = (navigate) => {
-    navigate("/create")
+    navigate("/create");
 }
 
 export const goToLastPage = (navigate) => {
-    navigate(-1)
+    navigate(-1);
  }
