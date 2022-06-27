@@ -1,4 +1,6 @@
 //barra de navegação da pagina
+import { useNavigate } from 'react-router-dom';
+import { goToLogin } from '../routes/coordinator';
 import styled from 'styled-components';
 
 const Navegation = styled.div`
@@ -26,10 +28,11 @@ const Navegation__btn = styled.button`
 `;
 
 export default function Nav (){
+    const navigate = useNavigate();
     return(
         <Navegation>
         <Navegation__tittle>LabeX</Navegation__tittle>
-        <Navegation__btn>Area do Admin</Navegation__btn> {/* nome do botão muda conforme está logado ou não */}
+        <Navegation__btn onClick={() => goToLogin(navigate)}>Area do Admin</Navegation__btn> {/* nome do botão muda conforme está logado ou não */}
       </Navegation>
     )
 }
