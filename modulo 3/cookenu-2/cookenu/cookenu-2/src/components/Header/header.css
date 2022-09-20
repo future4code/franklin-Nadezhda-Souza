@@ -1,0 +1,21 @@
+.header{
+    --cor-mais-clara: #40ffdc;
+    --cor-principal: #00a9d4;
+    --cor-escura: #1c3166;
+    --cor-mais-escura: #240047;
+    --cor-preto: #1c0021;
+}
+
+
+.header{
+    background-color: var(--cor-principal);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.title {
+    font-family: 'Pacifico', cursive;
+    font-size: 28px;
+}

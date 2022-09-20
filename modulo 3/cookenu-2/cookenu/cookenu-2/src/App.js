@@ -7,10 +7,10 @@ import Router from './routes/Router';
 function App() {
   return (
     <div className="App">
-      {/* <Router/> */} {/* //bug */}
-      <HomePage/>
+      <Router/>
+{/*       <HomePage/>
       <SignUpPage/>
-      <LoginPage/>
+      <LoginPage/> */}
     </div>
   );
 }
