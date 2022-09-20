@@ -2,6 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import dotenv from "dotenv"
 import { UserController } from './controller/UserController'
+import { RecipeController } from './controller/RecipeController'
 
 dotenv.config()
 
@@ -14,9 +15,11 @@ app.listen(process.env.PORT || 3003, () => {
 })
 
 const userController = new UserController()
+const recipeController = new RecipeController()
 
-app.post("/users/signup", userController.signup)
-app.post("/users/login", userController.login)
-app.get("/users/", userController.getUsers)
-app.delete("/users/:id", userController.deleteUser)
-app.put("/users/:id", userController.editUser)
+app.post("/users/signup", userController.signupEP)
+app.post("/users/login", userController.loginEP)
+app.get('/user/profile', userController.getOwnProfileEP)
+app.get('/user/:id', userController.getProfileByIdEP)
+app.post('/recipe', recipeController.createRecipeEP)
+app.get('/recipe/:id', recipeController.getRecipeEP)
