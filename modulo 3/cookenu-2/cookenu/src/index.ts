@@ -19,7 +19,7 @@ const recipeController = new RecipeController()
 
 app.post("/users/signup", userController.signupEP)
 app.post("/users/login", userController.loginEP)
+app.post('/recipe', recipeController.createRecipeEP)
 app.get('/user/profile', userController.getOwnProfileEP)
 app.get('/user/:id', userController.getProfileByIdEP)
-app.post('/recipe', recipeController.createRecipeEP)
 app.get('/recipe/:id', recipeController.getRecipeEP)

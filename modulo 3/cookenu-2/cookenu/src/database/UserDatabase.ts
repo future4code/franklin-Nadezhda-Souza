@@ -1,78 +1,56 @@
-import { IUserDB, User } from "../models/User"
-import { BaseDatabase } from "./BaseDatabase"
+import { BaseDatabase } from "./BaseDatabase";
+import { UserConnectionDatabase } from "./UserConnectionDatabase";
+import { RecipeDatabase } from "./RecipeDatabase";
+import * as moment from 'moment'
 
 export class UserDatabase extends BaseDatabase {
-    public static TABLE_USERS = "Arq_Users"
+  private static TABLE_NAME = "Cookenu_Users"
 
-    public findByEmail = async (email: string) => {
-        const usersDB: IUserDB[] = await BaseDatabase
-            .connection(UserDatabase.TABLE_USERS)
-            .select()
-            .where({ email })
+  public async createUser(userData: UserDatas): Promise<void> {
+    await this.setConnection()
+      .insert(userData)
+      .into(UserDatabase.TABLE_NAME)
+  }
 
-        return usersDB[0]
-    }
+  public async getUserByEmail(email: string): Promise<any> {
+    const result = await this.setConnection().raw(`SELECT * FROM ${UserDatabase.TABLE_NAME} WHERE email = "${email}"`)
+    return result[0][0]
+  }
 
-    public createUser = async (user: User) => {
-        const userDB: IUserDB = {
-            id: user.getId(),
-            name: user.getName(),
-            email: user.getEmail(),
-            password: user.getPassword(),
-            role: user.getRole()
-        }
+  public async getUserById(id: string): Promise<any> {
+    const result = await this.setConnection().select('*').from(UserDatabase.TABLE_NAME).where({ id })
+    return result[0]
+  }
 
-        await BaseDatabase
-            .connection(UserDatabase.TABLE_USERS)
-            .insert(userDB)
-    }
+  public async getFeed(id: string): Promise<any> {
+    const result = await this.setConnection()
+      .raw(`SELECT r.id, r.title, r.description, r.created_at as createdAt, uc.followed_id as userId, u.name as userName 
+                FROM ${RecipeDatabase.TABLE_NAME} r
+                JOIN ${UserConnectionDatabase.TABLE_NAME} uc ON r.creator_user_id = uc.followed_id
+                JOIN ${UserDatabase.TABLE_NAME} u ON uc.followed_id = u.id
+                WHERE uc.follower_id = "${id}" 
+                ORDER BY r.created_at DESC`)
 
-    public getUsers = async (input: any) => {
-        const search = input.search
-        const order = input.order
-        const sort = input.sort
-        const limit = input.limit
-        const offset = input.offset
+    const newArray = result[0].map((recipe: { createdAt: number; }) => {
+      return {
+        ...recipe,
+        createdAt: moment.unix(recipe.createdAt / 1000).format("DD/MM/YYYY")
+      }
+    })
+    return newArray
+  }
 
-        const usersDB: IUserDB[] = await BaseDatabase
-            .connection(UserDatabase.TABLE_USERS)
-            .select()
-            .where("name", "LIKE", `%${search}%`)
-            .orderBy(order, sort)
-            .limit(limit)
-            .offset(offset)
-        
-        return usersDB
-    }
+  public async deleteAccount(id:string): Promise<void> {
+    await this.setConnection().raw(`
+      DELETE FROM ${UserDatabase.TABLE_NAME} WHERE id="${id}"
+    `)
+  }
+}
 
-    public findById = async (id: string) => {
-        const usersDB: IUserDB[] = await BaseDatabase
-            .connection(UserDatabase.TABLE_USERS)
-            .select()
-            .where({ id })
-
-        return usersDB[0]
-    }
-
-    public deleteUser = async (id: string) => {
-        await BaseDatabase
-            .connection(UserDatabase.TABLE_USERS)
-            .delete()
-            .where({ id })
-    }
-
-    public editUser = async (user: User) => {
-        const userDB: IUserDB = {
-            id: user.getId(),
-            name: user.getName(),
-            email: user.getEmail(),
-            password: user.getPassword(),
-            role: user.getRole()
-        }
-        
-        await BaseDatabase
-            .connection(UserDatabase.TABLE_USERS)
-            .update(userDB)
-            .where({ id: userDB.id })
-    }
+export interface UserDatas {
+  id: string,
+  email: string,
+  password?: string,
+  name: string
+  role: string | undefined
 }

@@ -13,3 +13,7 @@ export const goToHomePage = (navigate) => {
 export const goToRecipesListPage = (navigate) => {
     navigate("/recipes")
 }
+
+export const goToAddRecipesPage = (navigate) => {
+    navigate('/new-recipes')
+}

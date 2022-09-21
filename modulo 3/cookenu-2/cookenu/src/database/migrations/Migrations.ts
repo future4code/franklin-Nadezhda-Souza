@@ -1,5 +1,5 @@
-import { BaseDatabase } from "../BaseDatabase"
-import { UserDatabase } from "../UserDatabase"
+import { BaseDatabase } from "../../database-template/BaseDatabase"
+import { UserDatabase } from "../../database-template/UserDatabase"
 import { users } from "./data"
 
 class Migrations extends BaseDatabase {

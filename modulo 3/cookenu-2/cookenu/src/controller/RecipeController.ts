@@ -1,10 +1,10 @@
 import { Request, Response } from 'express'
-import { BaseDatabase } from '../data/BaseDatabase'
+import { BaseDatabase } from '../database/BaseDatabase'
 import { IdGenerator } from '../services/IdGenerator'
 import { TokenManager } from '../services/TokenManager'
-import { RecipeDatabase } from '../data/RecipeDatabase'
+import { RecipeDatabase } from '../database/RecipeDatabase'
 import * as moment from 'moment'
-import { UserDatabase } from '../data/UserDatabase'
+import { UserDatabase } from '../database/UserDatabase'
 
 export class RecipeController {
   public createRecipeEP = async (req: Request, res: Response) => {
@@ -32,7 +32,7 @@ export class RecipeController {
   
       await new RecipeDatabase().createRecipe(recipeInputs)
   
-      res.sendStatus(200)
+      res.sendStatus(200).send('receita cadastrada com sucesso');
     }
     catch (err:any) {
       res.status(400).send({ message: err.message })

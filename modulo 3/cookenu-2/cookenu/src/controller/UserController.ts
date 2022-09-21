@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
 import { UserBusiness } from "../business/UserBusiness";
-import { BaseDatabase } from '../data/BaseDatabase'
-import { UserDatabase, UserDatas } from '../data/UserDatabase'
+import { BaseDatabase } from '../database/BaseDatabase'
+import { UserDatabase, UserDatas } from '../database/UserDatabase'
 import { TokenManager } from '../services/TokenManager'
-import { UserConnectionDatabase } from '../data/UserConnectionDatabase'
+import { UserConnectionDatabase } from '../database/UserConnectionDatabase'
 import { IdGenerator } from '../services/IdGenerator'
 import { HashManager } from '../services/HashManager'
 

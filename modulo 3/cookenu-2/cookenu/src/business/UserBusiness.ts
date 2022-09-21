@@ -1,4 +1,4 @@
-import { UserDatabase } from "../database/UserDatabase"
+import { UserDatabase } from "../database-template/UserDatabase"
 import { User, USER_ROLES } from "../models/User"
 import { Authenticator, ITokenPayload } from "../services/Authenticator"
 import { HashManager } from "../services/HashManager"

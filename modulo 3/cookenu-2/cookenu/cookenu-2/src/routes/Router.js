@@ -6,6 +6,7 @@ import { SignUpPage } from "../pages/SignUpPage"
 import { ErrorPage } from "../pages/ErrorPage"
 import { Header } from "../components/Header/header";
 import { RecipesListPage } from "../pages/recipesListPage";
+import { AddRecipesPage } from "../pages/AddRecipesPage";
 
 const Router = () => {
     return (
@@ -15,6 +16,7 @@ const Router = () => {
                 <Route path="/login" element={<LoginPage/>}></Route>
                 <Route path="/signup" element={<SignUpPage/>}></Route>
                 <Route path="/recipes" element={<RecipesListPage/>}></Route>
+                <Route path="/new-recipes" element={<AddRecipesPage/>}></Route>
                 <Route path="/" element={<HomePage/>}></Route>
                 <Route element={<ErrorPage/>}></Route> 
                 {/* qualquer coisa que não cair nas pastas informadas vai cair na página de erro */}
