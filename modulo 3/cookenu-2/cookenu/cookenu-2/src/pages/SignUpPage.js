@@ -1,12 +1,26 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import styled from  'styled-components'
+import { goToLogin, goToRecipesListPage } from "../routes/coordinator";
+import { useUnprotectedPage } from "../hooks/useUnprotectedPage";
+
+const ImgDiv = styled.div`
+    margin: 0;
+    img{
+        width: 150px;
+    }
+`
+
+const H1 = styled.h1`
+    margin: 0;
+`
 
 const SignUPContainer = styled.div`
     display: flex;
     flex-direction: column;
     width: 60%;
-    max-width: 600px;
+    max-width: 400px;
     justify-content: center;
     margin: auto;
     text-align: center;
@@ -45,12 +59,20 @@ const Button = styled.button`
     margin-top: 1rem;
 `
 
+const Link = styled.a`
+    color: #00a9d4;
+`
+
 export const SignUpPage = () => {
+    useUnprotectedPage();
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
+    const navigate = useNavigate();
 
-    const cadastrar = (name, email, password) => {
+    const login = (e, name, email, password) => {
+        e.preventDefault();
+
         const body = {
             name: name,
             password: password,
@@ -59,7 +81,8 @@ export const SignUpPage = () => {
 
        axios.post(`http://localhost:3003/users/signup`, body)
         .then((response) => {
-            console.log(response.data)
+            localStorage.setItem("token", response.data);
+            goToRecipesListPage(navigate);
         }).catch((error) => {
             console.log(error.response.data)
         }) 
@@ -68,12 +91,16 @@ export const SignUpPage = () => {
 
     return (
         <SignUPContainer>
-            <h1>Tela de Cadastro</h1>
-            <FormContainer onSubmit={() => cadastrar(name, email, password)}>
+            <ImgDiv>
+                <img src="https://st4.depositphotos.com/11574170/41085/v/450/depositphotos_410855094-stock-illustration-cook-circle-shadow-flat-icon.jpg"/>
+            </ImgDiv>
+            <H1>Cadastre-se</H1>
+            <FormContainer onSubmit={(e) => login(e, name, email, password)}>
                 <InputComponent placeholder="Nome" onChange={(e) => setName(e.target.value)}/>
                 <InputComponent type='password' placeholder="Senha" onChange={(e) => setPassword(e.target.value)}/>
                 <InputComponent placeholder="e-mail" onChange={(e) => setEmail(e.target.value)}/>
                 <Button type='submit'>Cadastrar</Button>
+                <p>Já possui cadastro? <Link onClick={() => goToLogin(navigate)}>Vá para a página de Login</Link></p>
             </FormContainer>  
         </SignUPContainer>
     )
