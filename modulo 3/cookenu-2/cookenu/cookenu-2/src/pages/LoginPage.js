@@ -27,6 +27,7 @@ const Button = styled.button`
     min-height: 2rem;
     min-width: 5rem;
     background-color: #00a9d4;
+/*     background-image: linear-gradient(101deg, #00d3d4, #00a9d4); */
     border-color: #1c3166;
     color: white;
     border-style: solid;

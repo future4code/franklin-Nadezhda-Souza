@@ -4,7 +4,7 @@ import { RecipeDatabase } from "./RecipeDatabase";
 import * as moment from 'moment'
 
 export class UserDatabase extends BaseDatabase {
-  private static TABLE_NAME = "User"
+  private static TABLE_NAME = "Cookenu_Users"
 
   public async createUser(userData: UserDatas): Promise<void> {
     await this.setConnection()

@@ -11,6 +11,16 @@ const SignUPContainer = styled.div`
     margin: auto;
     text-align: center;
 `
+
+const FormContainer = styled.form`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    margin: auto;
+    text-align: center
+`
+
 const InputComponent = styled.input`
     border-radius: 1rem;
     min-height: 2rem;
@@ -47,22 +57,24 @@ export const SignUpPage = () => {
             email: email,
         }
 
-  /*       axios.post(`http://localhost:3003/user`, body)
+       axios.post(`http://localhost:3003/users/signup`, body)
         .then((response) => {
             console.log(response.data)
         }).catch((error) => {
             console.log(error.response.data)
-        }) */
-        console.log('cadastrado', name, password, email)
+        }) 
+        HTMLFormElement.reset();
     };
 
     return (
         <SignUPContainer>
             <h1>Tela de Cadastro</h1>
-            <InputComponent placeholder="Nome" onChange={(e) => setName(e.target.value)}/>
-            <InputComponent type='password' placeholder="Senha" onChange={(e) => setPassword(e.target.value)}/>
-            <InputComponent placeholder="e-mail" onChange={(e) => setEmail(e.target.value)}/>
-            <Button onClick={() => cadastrar(name, email, password)}>Cadastrar</Button>
+            <FormContainer onSubmit={() => cadastrar(name, email, password)}>
+                <InputComponent placeholder="Nome" onChange={(e) => setName(e.target.value)}/>
+                <InputComponent type='password' placeholder="Senha" onChange={(e) => setPassword(e.target.value)}/>
+                <InputComponent placeholder="e-mail" onChange={(e) => setEmail(e.target.value)}/>
+                <Button type='submit'>Cadastrar</Button>
+            </FormContainer>  
         </SignUPContainer>
     )
 }
