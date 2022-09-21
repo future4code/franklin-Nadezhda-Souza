@@ -32,7 +32,7 @@ export class RecipeController {
   
       await new RecipeDatabase().createRecipe(recipeInputs)
   
-      res.sendStatus(200).send('receita cadastrada com sucesso');
+      res.sendStatus(200)
     }
     catch (err:any) {
       res.status(400).send({ message: err.message })
@@ -66,6 +66,20 @@ export class RecipeController {
         description: recipe.description,
         createdAt: moment.unix(recipe.created_at / 1000).format("DD/MM/YYYY"),
       })
+    }
+    catch (err) {
+      res.status(400).send({ message: err.message })
+    }
+    finally {
+      await BaseDatabase.desconnectDB()
+    }
+  }
+
+  public getAllRecipesEP = async (req: Request, res: Response) => {
+    try {
+      const recipes = await new RecipeDatabase().getRecipes()
+  
+      res.status(200).send(recipes)
     }
     catch (err) {
       res.status(400).send({ message: err.message })

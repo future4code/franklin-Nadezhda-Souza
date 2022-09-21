@@ -41,6 +41,13 @@ export class RecipeDatabase extends BaseDatabase {
       DELETE FROM ${RecipeDatabase.TABLE_NAME} WHERE creator_user_id="${id}"
     `)
   }
+
+  public async getRecipes(): Promise<any> {
+    const recipes = await this.setConnection()
+      .select('*')
+      .from(RecipeDatabase.TABLE_NAME)
+    return recipes //tirar o [0]
+  }
 }
 
 
