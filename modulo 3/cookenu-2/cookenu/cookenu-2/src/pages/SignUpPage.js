@@ -18,7 +18,7 @@ const FormContainer = styled.form`
     width: 100%;
     justify-content: center;
     margin: auto;
-    text-align: center
+    text-align: center;
 `
 
 const InputComponent = styled.input`
