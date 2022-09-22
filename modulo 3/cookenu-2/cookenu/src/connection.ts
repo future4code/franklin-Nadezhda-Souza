@@ -11,7 +11,9 @@ const connection = knex({
       user: process.env.DB_USER,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_SCHEMA,
-      multipleStatements: true
+      multipleStatements: true,
+ /*      requestTimeout: 600000,
+      idleTimeoutMillis: 150000, */
    },
 });
 

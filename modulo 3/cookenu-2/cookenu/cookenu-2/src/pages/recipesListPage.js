@@ -4,6 +4,22 @@ import { useProtectedPage } from "../hooks/useProtectedPage";
 import axios from "axios";
 import { ContextRecipes } from "../services/context";
 import { goToRecipeDetailPage } from "../routes/coordinator";
+import { Card } from "../components/card";
+import styled from 'styled-components'
+
+const RecipesListPageS = styled.div`
+    text-align: center;
+`
+
+const RecipesListComponent = styled.ul`
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin: auto;
+    list-style: none;
+    box-sizing: border-box;
+    padding: 0;
+    text-align: center;
+`
 
 export const RecipesListPage = () => {
     useProtectedPage();
@@ -28,19 +44,18 @@ export const RecipesListPage = () => {
     }, [recipes.state])
 
     return (
-        <div>
-            <h1>RecipesListPage</h1>
-            <ul>
+        <RecipesListPageS>
+            <h1>Lista de Receitas</h1>
+            <RecipesListComponent>
                 {recipes.state.map((recipe) => {
                     return (
                         <li key={recipe.id} onClick={() => goToRecipeDetailPage(navigate, recipe.id)}>
-                            <h3>{recipe.title}</h3>
-                            <p>{recipe.description}</p>
+                            <Card title={recipe.title} description={recipe.description}/>
                         </li>
                     )
                 })}
-            </ul>
-        </div>
+            </RecipesListComponent>
+        </RecipesListPageS>
         
     )
 }
