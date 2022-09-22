@@ -1,16 +1,22 @@
+import { useState } from 'react';
 import './App.css';
-import { HomePage } from './pages/HomePage';
-import { LoginPage } from './pages/LoginPage';
-import { SignUpPage } from './pages/SignUpPage';
 import Router from './routes/Router';
+import { ContextRecipes } from './services/context';
 
 function App() {
+  const [recipes, setRecipes] = useState([]);
+
+  const globalRecipes = {
+    state: recipes,
+    setter: setRecipes,
+  }
+
   return (
     <div className="App">
-      <Router/>
-{/*       <HomePage/>
-      <SignUpPage/>
-      <LoginPage/> */}
+      <ContextRecipes.Provider value={globalRecipes}>
+        <Router/>
+      </ContextRecipes.Provider>
+
     </div>
   );
 }

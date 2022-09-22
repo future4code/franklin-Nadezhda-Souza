@@ -64,7 +64,7 @@ export class RecipeController {
         id: recipe.id,
         title: recipe.title,
         description: recipe.description,
-        createdAt: moment.unix(recipe.created_at / 1000).format("DD/MM/YYYY"),
+        createdAt: moment.unix(recipe.createdAt / 1000).format("DD/MM/YYYY"),
       })
     }
     catch (err) {
@@ -77,6 +77,15 @@ export class RecipeController {
 
   public getAllRecipesEP = async (req: Request, res: Response) => {
     try {
+      const retriviedData = new TokenManager()
+      .retrieveDataFromToken(req.headers.authorization as string)
+
+      const userData = await new UserDatabase().getUserById(retriviedData.id)
+
+      if (!userData) {
+        throw new Error('Faça login na sua conta antes de acessar receitas')
+      }
+
       const recipes = await new RecipeDatabase().getRecipes()
   
       res.status(200).send(recipes)

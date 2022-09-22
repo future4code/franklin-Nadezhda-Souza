@@ -1,16 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {useNavigate} from 'react-router-dom'
 import { useProtectedPage } from "../hooks/useProtectedPage";
 import axios from "axios";
+import { ContextRecipes } from "../services/context";
+import { goToRecipeDetailPage } from "../routes/coordinator";
 
 export const RecipesListPage = () => {
     useProtectedPage();
-    const [recipes, setRecipes] = useState([]);
+    const navigate = useNavigate();
+    const recipes = useContext(ContextRecipes)
 
     const getRecipesList = () => {
-        axios.get(`http://localhost:3003/recipes`)
+        const headers = {
+            authorization: localStorage.getItem('token'),
+        }
+
+        axios.get(`http://localhost:3003/recipes`, {headers: headers})
         .then((response) => {
-            setRecipes(response.data);
+            recipes.setter(response.data);
         }).catch((error) => {
             console.log(error.response.data)
         })
@@ -18,15 +25,15 @@ export const RecipesListPage = () => {
     
     useEffect(() => {
         getRecipesList();
-    }, [])
+    }, [recipes.state])
 
     return (
         <div>
             <h1>RecipesListPage</h1>
             <ul>
-                {recipes.map((recipe) => {
+                {recipes.state.map((recipe) => {
                     return (
-                        <li key={recipe.id}>
+                        <li key={recipe.id} onClick={() => goToRecipeDetailPage(navigate, recipe.id)}>
                             <h3>{recipe.title}</h3>
                             <p>{recipe.description}</p>
                         </li>
