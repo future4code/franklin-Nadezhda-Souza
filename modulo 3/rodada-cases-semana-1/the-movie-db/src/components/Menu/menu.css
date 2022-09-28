@@ -34,6 +34,13 @@
 
 .buttons{
     text-align: left;
+    list-style: none;
+    padding: 0;
+}
+
+.buttons li{
+    list-style: none;
+    display: inline-block;
 }
 
 .buttons button{
