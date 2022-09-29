@@ -3,7 +3,7 @@
     margin: 4px;
 }
 
-.pages p{
+.pages a{
     margin: 0 12px;
     color: #5C16C5;
     font-family: 'Roboto';
@@ -11,4 +11,8 @@
     font-weight: 700;
     font-size: 16px;
     line-height: 24px;
+}
+
+.pages .current-page{
+    text-decoration: underline;
 }

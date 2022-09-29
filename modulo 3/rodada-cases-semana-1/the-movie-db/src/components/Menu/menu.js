@@ -1,6 +1,7 @@
 import React, { useContext} from 'react'
 import './menu.css'
 import { ContextMovies } from '../../services/context'
+import { AiFillCloseCircle } from "react-icons/ai";
 
 export const Menu = () => {
     const globalMovies = useContext(ContextMovies);
@@ -14,7 +15,15 @@ export const Menu = () => {
                     {globalMovies.genres.map((genre) => {
                         return (
                             <li>
-                                <button className={globalMovies.filters.includes(genre.id) ? 'selected' : 'unselected'} onClick={() => globalMovies.addGenreFilter(genre.id)}>{genre.name}</button>
+                                <button 
+                                className={globalMovies.filters.includes(genre.id) ? 'selected' : 'unselected'} 
+                                onClick={() => globalMovies.addGenreFilter(genre.id)}
+                                >
+                                    {genre.name}
+                                    {(globalMovies.filters.includes(genre.id) && (
+                                        <AiFillCloseCircle className='x-icon'/>
+                                    ))}
+                                </button>
                             </li>
                         )
                     })}

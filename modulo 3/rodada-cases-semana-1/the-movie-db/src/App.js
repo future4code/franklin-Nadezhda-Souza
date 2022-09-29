@@ -47,10 +47,6 @@ function App() {
 
     }
 
-    const teste = () => {
-      alert('ok')
-    }
-
     const globalMovies = {
       movies: movies,
       setMovies: setMovies,
@@ -68,7 +64,6 @@ function App() {
       getMoviesList: getMoviesList,
       addGenreFilter: addGenreFilter,
       getGenres: getGenres,
-      teste: teste,
       buttonSelected: buttonSelected,
       setButtonSelected: setButtonSelected,
     }

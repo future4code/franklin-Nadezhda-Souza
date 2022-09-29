@@ -69,6 +69,14 @@
     font-weight: 700;
     font-size: 14px;
     line-height: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.x-icon{
+    margin-left: 4px;
 }
 
 @media (min-width: 800px){
