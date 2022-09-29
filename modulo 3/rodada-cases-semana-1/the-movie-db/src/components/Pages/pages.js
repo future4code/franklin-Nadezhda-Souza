@@ -25,7 +25,6 @@ export const Pages = () => {
         }else if(totalPages === 1){
             return (
                 <div className='pages'>
-                    <a onClick={() => globalMovies.setPage(1)}>1</a>
                 </div>
             )
         }

@@ -13,6 +13,6 @@
 
 @media (min-width: 800px){
     .moviesList{
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     }
 }
