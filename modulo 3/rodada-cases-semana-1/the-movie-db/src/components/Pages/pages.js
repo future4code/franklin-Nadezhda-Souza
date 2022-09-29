@@ -43,7 +43,7 @@ export const Pages = () => {
                     <a onClick={() => globalMovies.setPage(globalMovies.totalPages)}>Ultima</a>
                 </div>
             )}
-            {(globalMovies.page > 2 && globalMovies.page < (globalMovies.totalPages - 2) ) &&  (
+            {(globalMovies.page >= 3 && globalMovies.page < (globalMovies.totalPages - 2) ) &&  (
                 <div className='pages'>
                     <a onClick={() => globalMovies.setPage(1)}>Primeira</a>
                     <a onClick={() => globalMovies.setPage((page) => page - 1)}>{'<'}</a>
