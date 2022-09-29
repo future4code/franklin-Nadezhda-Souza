@@ -43,9 +43,23 @@
     display: inline-block;
 }
 
-.buttons button{
+.unselected{
     background-color: white;
     color: #323232;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 16px;
+    margin: 5px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.selected{
+    background-color: #D18000;
+    color: white;
     border: none;
     border-radius: 4px;
     padding: 6px 16px;

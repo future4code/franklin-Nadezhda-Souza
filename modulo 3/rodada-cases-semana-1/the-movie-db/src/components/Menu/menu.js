@@ -1,6 +1,5 @@
-import React from 'react'
+import React, { useContext} from 'react'
 import './menu.css'
-import { useContext } from 'react'
 import { ContextMovies } from '../../services/context'
 
 export const Menu = () => {
@@ -15,7 +14,7 @@ export const Menu = () => {
                     {globalMovies.genres.map((genre) => {
                         return (
                             <li>
-                                <button onClick={() => globalMovies.addGenreFilter(genre.id)}>{genre.name}</button>
+                                <button className={globalMovies.filters.includes(genre.id) ? 'selected' : 'unselected'} onClick={() => globalMovies.addGenreFilter(genre.id)}>{genre.name}</button>
                             </li>
                         )
                     })}

@@ -10,6 +10,7 @@ function App() {
     const [totalPages, setTotalPages] = useState(undefined);
     const [genres, setGenres] = useState([]);
     const [filters, setFilters] = useState([]);
+    const [buttonSelected, setButtonSelected] = useState('unselected');
     const apiKey = 'd081d773005fd2cf3c72b3e5ac20847d'
     const language = 'pt-BR'
     const sortBy = 'popularity.desc'
@@ -32,18 +33,18 @@ function App() {
     useEffect(() => {
       getMoviesList();
       getGenres();
-    }, [page, filters]);
+    }, [page, filters, buttonSelected]);
 
     const addGenreFilter = (filter) => {
       setPage(1);
       if(filters.includes(filter)){
         filters.splice(filters.indexOf(filter), 1);
-        console.log(filters);
+        setButtonSelected(!buttonSelected);
       }else{
-        setFilters(() => [...filters, filter])
-        console.log(filters);
+        setFilters([...filters, filter]);
+        setButtonSelected(!buttonSelected);
       }
-        
+
     }
 
     const teste = () => {
@@ -68,6 +69,8 @@ function App() {
       addGenreFilter: addGenreFilter,
       getGenres: getGenres,
       teste: teste,
+      buttonSelected: buttonSelected,
+      setButtonSelected: setButtonSelected,
     }
     
   return (
