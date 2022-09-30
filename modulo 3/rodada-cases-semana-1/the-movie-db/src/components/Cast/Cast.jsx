@@ -10,7 +10,7 @@ export const Cast = () => {
     return (
         <div className="cast">
             <h4 className="title">Elenco original</h4>
-            {/* <ul className="cast__list">
+            <ul className="cast__list">
                 { globalContext.credits.cast.map((actor) => {
                 return  <CastCard
                         id={actor.id}
@@ -19,7 +19,7 @@ export const Cast = () => {
                         character={actor.character}
                     />
                 })}
-            </ul> */}
+            </ul>
             
         </div>
     )
