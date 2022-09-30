@@ -11,6 +11,9 @@ function App() {
     const [genres, setGenres] = useState([]);
     const [filters, setFilters] = useState([]);
     const [buttonSelected, setButtonSelected] = useState('unselected');
+    const [id, setId] = useState('');
+    const [image, setImage] = useState('');
+    const [trailer, setTrailer] = useState('');
     const apiKey = 'd081d773005fd2cf3c72b3e5ac20847d'
     const language = 'pt-BR'
     const sortBy = 'popularity.desc'
@@ -24,9 +27,16 @@ function App() {
     }
     
     const getGenres = () => {
-      axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=d081d773005fd2cf3c72b3e5ac20847d&language=pt-BR`)
+      axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=${language}`)
       .then(resp => {
         setGenres(resp.data.genres)
+      });
+    }
+
+    const getTrailer = () => {
+      axios.get(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${apiKey}&language=${language}`)
+      .then(resp => {
+        setTrailer(resp.data.results[0].key)
       });
     }
 
@@ -66,6 +76,12 @@ function App() {
       getGenres: getGenres,
       buttonSelected: buttonSelected,
       setButtonSelected: setButtonSelected,
+      id: id,
+      setId: setId,
+      image: image,
+      setImage: setImage,
+      getTrailer: getTrailer,
+      trailer: trailer,
     }
     
   return (
