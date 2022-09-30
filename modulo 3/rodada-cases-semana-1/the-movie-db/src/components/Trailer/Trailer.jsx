@@ -1,16 +1,10 @@
 import React from "react";
-import { useEffect } from "react";
 import { useContext } from "react";
 import { ContextMovies } from "../../services/context";
 import './Trailer.css'
 
 export const Trailer = () => {
     const globalMovies = useContext(ContextMovies);
-
-    useEffect(() => {
-        globalMovies.getTrailer();
-        console.log(globalMovies.trailer)
-    }, [globalMovies.trailer])
 
     return (
         <div className="trailer">

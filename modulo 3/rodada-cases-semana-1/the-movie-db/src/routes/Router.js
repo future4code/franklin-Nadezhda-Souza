@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { HomePage } from "../pages/HomePage";
+import { HomePage } from "../pages/HomePage/HomePage.js";
 import { ErrorPage } from "../pages/ErrorPage";
-import { MovieDetailsPage } from "../pages/MovieDetailsPage";
+import { MovieDetailsPage } from "../pages/MovieDetailsPage/MovieDetailsPage.js";
 import { Header } from "../components/Header/header";
 
 const Router = () => {

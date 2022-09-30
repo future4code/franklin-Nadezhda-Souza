@@ -25,8 +25,8 @@ export const Details = () => {
     }
 
     useEffect(() => {
-        getMovieDetails()
-    }, [])
+        getMovieDetails();
+    }, [globalMovies.id])
 
     return (
         <div className="details">
@@ -70,10 +70,22 @@ export const Details = () => {
                     <p>{movieDetails.overview}</p>
                 </div>
                 <div className="credits">
-                    <div>
+                    <div className="credits-card">
                         <h5>Rob Liefeld</h5>
                         <p>Characters</p>
-                    </div>   
+                    </div>  
+                    <div className="credits-card">
+                        <h5>Rob Liefeld</h5>
+                        <p>Characters</p>
+                    </div> 
+                    <div className="credits-card">
+                        <h5>Rob Liefeld</h5>
+                        <p>Characters</p>
+                    </div> 
+                    <div className="credits-card">
+                        <h5>Rob Liefeld</h5>
+                        <p>Characters</p>
+                    </div>  
                 </div>
             </div>
         </div>

@@ -14,9 +14,12 @@ function App() {
     const [id, setId] = useState('');
     const [image, setImage] = useState('');
     const [trailer, setTrailer] = useState('');
+    const [recomendations , setRecomendations] = useState([])
+    const [credits , setCredits] = useState({})
     const apiKey = 'd081d773005fd2cf3c72b3e5ac20847d'
     const language = 'pt-BR'
     const sortBy = 'popularity.desc'
+
 
     const getMoviesList = () => {
         axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=${language}&sort_by=${sortBy}&include_adult=false&include_video=false&page=${page}&with_watch_monetization_types=flatrate&with_genres=${filters}`)
@@ -40,10 +43,12 @@ function App() {
       });
     }
 
-    useEffect(() => {
-      getMoviesList();
-      getGenres();
-    }, [page, filters, buttonSelected]);
+    const getRecomendations = () => {
+      axios.get(`https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${apiKey}&language=${language}&page=1`)
+      .then(resp => {
+        setRecomendations(resp.data.results);
+      });
+    }
 
     const addGenreFilter = (filter) => {
       setPage(1);
@@ -56,6 +61,26 @@ function App() {
       }
 
     }
+
+    const getCredits = () => {
+      axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${apiKey}&language=${language}`)
+      .then(resp => {
+        setCredits(resp.data);
+      });
+    }
+
+    useEffect(() => {
+      getMoviesList();
+      getGenres();
+    }, [page, filters, buttonSelected]);
+
+    useEffect(() => {
+      getTrailer();
+      getRecomendations();
+      getCredits();
+      console.log(credits);
+      console.log(trailer);
+    }, [id])
 
     const globalMovies = {
       movies: movies,
@@ -82,6 +107,10 @@ function App() {
       setImage: setImage,
       getTrailer: getTrailer,
       trailer: trailer,
+      getRecomendations: getRecomendations,
+      recomendations: recomendations,
+      setRecomendations: setRecomendations,
+      credits: credits,
     }
     
   return (

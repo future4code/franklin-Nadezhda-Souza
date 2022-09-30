@@ -3,6 +3,12 @@
     padding: 10vh 5vw 1rem 5vw;
 }
 
+.recomendation__list{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    padding: 0;
+}
+
 .title{
     font-weight: 700;
     font-size: 28px;

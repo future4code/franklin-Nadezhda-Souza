@@ -1,6 +1,6 @@
 import React from "react";
-import { Menu } from "../components/Menu/menu";
-import { MoviesList } from "../components/MovieList/movieList";
+import { Menu } from "../../components/Menu/menu";
+import { MoviesList } from "../../components/MovieList/movieList";
 
 export const HomePage = () => {
     /* const navigate = useNavigate(); */
