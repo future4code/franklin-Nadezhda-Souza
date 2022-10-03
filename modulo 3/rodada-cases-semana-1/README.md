@@ -16,7 +16,7 @@ Siga o layout do figma sugerido. Não há necessidade de ser pixel perfect mas r
 
 - [x] O usuário deve conseguir paginar a lista para encontrar novos filmes
 
-- [ ] O usuário deve ter acesso a uma outra página com detalhes sobre o filme, ao clicar em um item na listagem
+- [x] O usuário deve ter acesso a uma outra página com detalhes sobre o filme, ao clicar em um item na listagem
 
 - [ ] A página com detalhes de um filme deve possuir uma rota própria e estar preparada para ser indexada em mecanismos de pesquisa
 
