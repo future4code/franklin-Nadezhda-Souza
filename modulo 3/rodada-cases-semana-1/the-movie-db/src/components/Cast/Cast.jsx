@@ -11,7 +11,7 @@ export const Cast = () => {
         <div className="cast">
             <h4 className="title">Elenco original</h4>
             <ul className="cast__list">
-                { globalContext.credits.cast.map((actor) => {
+                {globalContext.credits.cast?.map((actor) => {
                 return  <CastCard
                         id={actor.id}
                         image={actor.profile_path}

@@ -4,6 +4,8 @@ import { useContext } from "react";
 import { ContextMovies } from "../../services/context";
 import axios from "axios";
 import { useEffect } from "react";
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 import './Details.css'
 
 export const Details = () => {
@@ -32,7 +34,7 @@ export const Details = () => {
         <div className="details">
             <img id="movieImage" src={`https://image.tmdb.org/t/p/w500/${globalMovies.image}`}/>
             <div className="text__details">
-                <h3 id="title">{movieDetails.title}</h3>
+                <h3 id="title">{movieDetails.title} {(movieDetails.release_date) && (`(${movieDetails.release_date?.substr(0,4)})`)}</h3>
                 <ul className="info">
                     <li id="age-group">
                         {releaseDate.map((result) =>{
@@ -62,7 +64,19 @@ export const Details = () => {
                     </li>
                 </ul>
                 <div className="rating">
-                    <p>{Math.round(movieDetails.vote_average * 10)}%</p>
+                    <div className="circularProgressbar">
+                        <CircularProgressbar 
+                            value={Math.round(movieDetails.vote_average * 10)} 
+                            text={`${Math.round(movieDetails.vote_average * 10)}%`}
+                            styles={ buildStyles({
+                                pathColor: '#14FF00',
+                                textColor: '#14FF00',
+                                trailColor: 'rgba(255, 255, 255, 0.1)',
+                                backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                            })
+                            }
+                        />
+                    </div>
                     <p className="rating-text">Avaliação dos usuários</p>
                 </div>
                 <div className="overview">

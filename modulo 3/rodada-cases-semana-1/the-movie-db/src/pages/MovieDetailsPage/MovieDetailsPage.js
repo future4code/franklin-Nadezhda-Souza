@@ -4,8 +4,18 @@ import { Trailer } from "../../components/Trailer/Trailer.jsx";
 import { Cast } from "../../components/Cast/Cast.jsx";
 import { Recomendations } from "../../components/Recomendations/Recomendations.jsx";
 import './MovieDetailsPage.css'
+import { useContext, useEffect } from "react";
+import { ContextMovies } from "../../services/context.js";
 
 export const MovieDetailsPage = () => {
+    const globalContext = useContext(ContextMovies);
+
+    useEffect(() => {
+        globalContext.getTrailer();
+        globalContext.getRecomendations();
+        globalContext.getCredits();
+        window.scrollTo(0, 0);
+    }, [globalContext.id, globalContext.buttonSelected2])
 
     return (
         <div className="movieDetailsPage">

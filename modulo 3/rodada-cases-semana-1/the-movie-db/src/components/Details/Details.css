@@ -39,7 +39,7 @@
 .info li{
     margin: 15px;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 24px;
 }
 
@@ -49,8 +49,43 @@
 }
 
 .rating{
-    display: flex;
+    display: flex; 
 }
+
+.circularProgressbar{
+    width: 3rem;
+    font-weight: 700;
+}
+
+/* .rating span{
+    border-radius: 50%;
+    height:4rem;
+    width: 4rem;
+    background: conic-gradient(#14FF00 0deg 50deg, rgba(255, 255, 255, 0.1) 50deg 360deg ); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 38px;
+    letter-spacing: -0.005em;
+    color: #14FF00;
+}
+
+.rating span::before {
+    content: '75%';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2D0C5E;
+    border-radius: 100%;
+    position: absolute;
+    height:3rem;
+    width: 3rem; 
+} */
+
 
 .rating-text{
     font-weight: 400;
