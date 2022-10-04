@@ -13,7 +13,7 @@ export const Recomendations = () => {
             <h4 className="title">Recomendações</h4>
             <ul className="recomendation__list">
                 {globalContext.recomendations.map((recomendation, i) => {
-                    if(i < 5){
+                    if(i < 6){
                         return(
                             <MovieCard
                             id={recomendation.id}

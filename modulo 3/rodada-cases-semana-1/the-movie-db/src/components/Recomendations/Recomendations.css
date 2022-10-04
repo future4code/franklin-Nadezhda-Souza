@@ -1,11 +1,11 @@
 .recomendations{
     text-align: left;
-    padding: 1rem 5vw 1rem 5vw;
+    padding: 1rem 5vw;
 }
 
 .recomendation__list{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     padding: 0;
 }
 
@@ -15,4 +15,10 @@
     line-height: 32px;
     color: #131313;
     margin: 1rem 0 ;
+}
+
+@media (max-width: 800px){
+    .recomendation__list{
+        grid-template-columns: 1fr 1fr;
+    }
 }

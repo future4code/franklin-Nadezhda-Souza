@@ -3,6 +3,7 @@ import Router from './routes/Router'
 import { ContextMovies } from './services/context';
 import React, {useState, useEffect} from 'react';
 import axios from "axios";
+/* import useParams from './hooks/useParams'; */
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -16,6 +17,8 @@ function App() {
   const [trailer, setTrailer] = useState('');
   const [recomendations , setRecomendations] = useState([])
   const [credits , setCredits] = useState({})
+/*   const params = useParams('/movies/:movieID');
+  const movieID = params; */
   const apiKey = 'd081d773005fd2cf3c72b3e5ac20847d'
   const language = 'pt-BR'
   const sortBy = 'popularity.desc'
@@ -71,8 +74,10 @@ function App() {
   }
 
   useEffect(() => {
+    console.log('useEffect');
     getMoviesList();
     getGenres();
+    /* console.log(movieID); */
   }, [page, filters, buttonSelected]);
 
   const globalMovies = {

@@ -1,6 +1,7 @@
 .header{
     background-color: #5C16C5;
     padding: 1rem;
+    width: 100vw;
 }
 
 @media (min-width: 800px){

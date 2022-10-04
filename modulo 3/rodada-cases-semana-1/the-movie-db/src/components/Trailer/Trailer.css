@@ -18,3 +18,16 @@
     min-width: 320px;
     min-height: 180px;
 }
+
+@media (max-width: 800px){
+    .trailer{
+        display: flex;
+        flex-direction: column;
+        justify-content: left;
+    }
+    .video{
+        width: 60vw;
+        max-height: 200px;
+        align-self: center;
+    }
+}
