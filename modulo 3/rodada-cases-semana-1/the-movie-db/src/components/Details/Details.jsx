@@ -41,9 +41,11 @@ export const Details = () => {
                     <li id="age-group">
                         {releaseDate.map((result) =>{
                             if(result.iso_3166_1 === 'BR'){
-                                return(result.release_dates[0].certification)
+                                if(result.release_dates[0].certification){
+                                    return(result.release_dates[0].certification  + ' anos') 
+                                }
                             }
-                        })} anos
+                        })}
                     </li> 
                     <li>
                         {releaseDate.map((result) =>{
