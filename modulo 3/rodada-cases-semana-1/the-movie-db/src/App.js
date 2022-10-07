@@ -77,6 +77,7 @@ function App() {
     console.log('useEffect');
     getMoviesList();
     getGenres();
+    getCredits();
     /* console.log(movieID); */
   }, [page, filters, buttonSelected]);
 

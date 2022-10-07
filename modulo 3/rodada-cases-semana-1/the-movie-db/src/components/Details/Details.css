@@ -1,14 +1,15 @@
 .details{
-    width: 100vw;
+    width: 100%;
     background-color: #2D0C5E;
     color: white;
     font-family: 'Roboto';
     font-style: normal;
     padding: 1rem 0;
+    box-sizing: border-box;
 }
 
 #movieImage{
-    width: 50%;
+    max-width: 50%;
     height: auto;
     top: 0;
     margin-top: 1rem;
@@ -86,30 +87,20 @@
     color: #DDDDDD;
     letter-spacing: -0.005em;
 }
-
 .credits{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     text-align: left;
+    list-style: none;
+    padding: 0;
+    overflow: auto;
+    max-height: 150px;
+    scrollbar-width: none;
 }
 
-.credits h5{
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 24px;
-    margin: 0;
+.credits::-webkit-scrollbar{
+    width: 0;
 }
-
-.credits p {
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 20px;
-    margin: 0;
-}
-
-.credits-card{
-    margin: 1rem 0;
-} 
 
 @media (min-width: 800px){
     .details{
@@ -118,10 +109,9 @@
     }
     
     #movieImage{
-        max-height: 90vh;
-        min-height: 400px;
+        max-height: 500px;
         position: relative;
-        top: 10vh;
+        top: 50px;
     }
 
     .text__details{
@@ -161,5 +151,9 @@
     .circularProgressbar{
         width: 3rem;
         margin: 0;
+    }
+
+    .credits{
+        grid-template-columns: 1fr 1fr 1fr;
     }
 }

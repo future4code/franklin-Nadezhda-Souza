@@ -1,7 +1,8 @@
 .header{
     background-color: #5C16C5;
     padding: 1rem;
-    width: 100vw;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 @media (min-width: 800px){

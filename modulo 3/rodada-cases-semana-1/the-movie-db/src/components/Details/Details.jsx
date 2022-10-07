@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import './Details.css'
+import { CreditsCard } from "../CreditsCard/CreditsCard";
 
 export const Details = () => {
     const globalMovies = useContext(ContextMovies);
@@ -19,6 +20,7 @@ export const Details = () => {
         .then(resp => {
             setMovieDetails(resp.data);
             setGenres(resp.data.genres);
+            globalMovies.setImage(resp.data.poster_path)
         });
         axios.get(`https://api.themoviedb.org/3/movie/${globalMovies.id}/release_dates?api_key=${globalMovies.apiKey}`)
         .then(resp => {
@@ -83,24 +85,17 @@ export const Details = () => {
                     <h4>Sinopse</h4>
                     <p>{movieDetails.overview}</p>
                 </div>
-                <div className="credits">
-                    <div className="credits-card">
-                        <h5>Rob Liefeld</h5>
-                        <p>Characters</p>
-                    </div>  
-                    <div className="credits-card">
-                        <h5>Rob Liefeld</h5>
-                        <p>Characters</p>
-                    </div> 
-                    <div className="credits-card">
-                        <h5>Rob Liefeld</h5>
-                        <p>Characters</p>
-                    </div> 
-                    <div className="credits-card">
-                        <h5>Rob Liefeld</h5>
-                        <p>Characters</p>
-                    </div>  
-                </div>
+                <ul className="credits">
+                    {globalMovies.credits.crew?.map((person) => {
+                        console.log(person)
+                        return(
+                            <CreditsCard
+                                name={person.name}
+                                job={person.job}
+                            /> 
+                        )
+                    })}  
+                </ul>
             </div>
         </div>
     )

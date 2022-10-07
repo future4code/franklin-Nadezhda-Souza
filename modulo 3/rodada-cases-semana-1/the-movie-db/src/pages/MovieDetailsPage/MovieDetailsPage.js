@@ -6,11 +6,14 @@ import { Recomendations } from "../../components/Recomendations/Recomendations.j
 import './MovieDetailsPage.css'
 import { useContext, useEffect } from "react";
 import { ContextMovies } from "../../services/context.js";
+import { useParams } from "react-router";
 
 export const MovieDetailsPage = () => {
     const globalContext = useContext(ContextMovies);
+    const {id} = useParams();
 
     useEffect(() => {
+        globalContext.setId(id);
         globalContext.getTrailer();
         globalContext.getRecomendations();
         globalContext.getCredits();
