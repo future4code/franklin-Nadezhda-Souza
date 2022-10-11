@@ -18,14 +18,14 @@ Siga o layout do figma sugerido. Não há necessidade de ser pixel perfect mas r
 
 - [x] O usuário deve ter acesso a uma outra página com detalhes sobre o filme, ao clicar em um item na listagem
 
-- [ ] A página com detalhes de um filme deve possuir uma rota própria e estar preparada para ser indexada em mecanismos de pesquisa
+- [x] A página com detalhes de um filme deve possuir uma rota própria e estar preparada para ser indexada em mecanismos de pesquisa
 
 ## Requisitos não funcionais
 - [x] O app deverá ser criado usando React
 
-- [ ] Na raiz do projeto, será necessário incluir um arquivo README.md com as instruções para construir seu projeto localmente. Opcionalmente você pode detalhar as razões pelas escolhas de ferramentas e técnicas aplicadas ao desafio.
+- [x] Na raiz do projeto, será necessário incluir um arquivo README.md com as instruções para construir seu projeto localmente. Opcionalmente você pode detalhar as razões pelas escolhas de ferramentas e técnicas aplicadas ao desafio.
 
-- [ ] O app deverá se comportar da mesma forma na última versão estável dos seguintes browsers: Chrome, Firefox, Edge
+- [x] O app deverá se comportar da mesma forma na última versão estável dos seguintes browsers: Chrome, Firefox, Edge
 
 - [x] O app deverá ser responsivo
 
