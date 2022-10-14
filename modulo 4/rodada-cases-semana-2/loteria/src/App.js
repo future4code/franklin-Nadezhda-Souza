@@ -1,6 +1,8 @@
 import './App.css';
 import styled from 'styled-components'
 import { TiArrowSortedDown } from "react-icons/ti";
+import { useState } from 'react';
+import axios from 'axios';
 
 const AppS = styled.div`
   background-color:  #efefef;
@@ -97,14 +99,29 @@ const DetailsS = styled.div`
 `
 
 function App() {
+  const [loterias, setLoterias] = useState([]);
+
+  const getLoterias = () => {
+    axios.get('https://brainn-api-loterias.herokuapp.com/api/v1/loterias')
+    .then((response) => {
+      setLoterias(response.data);
+    })
+  }
+
+  useState(() => {
+    getLoterias();
+  }, [])
+
   return (
     <AppS>
       <HeaderS>
         <div className='select'>
-          <select>
-            <option value="valor1" selected>Valor 1</option>
-            <option value="valor2">Valor 2</option>
-            <option value="valor3">Valor 3</option>
+          <select defaultValue={loterias[0].nome}>
+            {loterias.map((loteria) => {
+              return(
+                <option value={loteria.nome}>{loteria.nome}</option>
+              )
+            })}
           </select>
           <TiArrowSortedDown/>
         </div>
