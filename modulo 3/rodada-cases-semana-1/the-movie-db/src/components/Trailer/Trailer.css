@@ -1,0 +1,33 @@
+.trailer{
+    text-align: left;
+    padding: 1rem 5vw 1rem 5vw;
+}
+
+.trailer__title{
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 32px;
+    color: #131313;
+    margin: 0;
+    margin-bottom: 2rem;
+}
+
+.video{
+    width: 60vw;
+    height: 80vh;
+    min-width: 320px;
+    min-height: 180px;
+}
+
+@media (max-width: 800px){
+    .trailer{
+        display: flex;
+        flex-direction: column;
+        justify-content: left;
+    }
+    .video{
+        width: 60vw;
+        max-height: 200px;
+        align-self: center;
+    }
+}

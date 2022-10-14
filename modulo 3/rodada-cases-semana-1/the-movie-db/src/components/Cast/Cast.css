@@ -1,0 +1,18 @@
+.cast{
+    text-align: left;
+    padding: 10vh 5vw 1rem 5vw;
+}
+
+.title{
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 32px;
+    color: #131313;
+    margin: 1rem 0 ;
+}
+
+.cast__list{
+    display: flex;
+    overflow: auto;
+    padding: 0;
+}

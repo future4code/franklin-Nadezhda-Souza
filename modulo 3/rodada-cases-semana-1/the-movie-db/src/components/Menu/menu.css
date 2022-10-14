@@ -1,0 +1,96 @@
+.menu{
+    background-color: #2D0C5E;
+    margin: 0;
+    padding: 2rem 1rem;
+}
+
+.menu h4{
+    color: white;
+    text-align: left;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+    margin: 1rem 0;
+}
+
+.filter{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.filter p{
+    color: white;
+    margin: 0;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    margin: 8px 0;
+}
+
+.buttons{
+    text-align: left;
+    list-style: none;
+    padding: 0;
+}
+
+.buttons li{
+    list-style: none;
+    display: inline-block;
+}
+
+.unselected{
+    background-color: white;
+    color: #323232;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 16px;
+    margin: 5px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.selected{
+    background-color: #D18000;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 16px;
+    margin: 5px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.x-icon{
+    margin-left: 4px;
+}
+
+@media (min-width: 800px){
+    .menu h4{
+        text-align: center;
+        font-size: 48px;
+        line-height: 56px;
+    }
+
+    .filter{
+        align-items: center;
+    }
+
+    .buttons{
+        text-align: center;
+    }
+}

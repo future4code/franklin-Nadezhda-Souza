@@ -1,0 +1,18 @@
+.moviesListContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem;
+}
+
+.moviesList{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0;
+}
+
+@media (min-width: 800px){
+    .moviesList{
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+}

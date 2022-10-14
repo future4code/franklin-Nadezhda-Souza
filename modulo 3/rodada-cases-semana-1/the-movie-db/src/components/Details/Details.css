@@ -1,0 +1,159 @@
+.details{
+    width: 100%;
+    background-color: #2D0C5E;
+    color: white;
+    font-family: 'Roboto';
+    font-style: normal;
+    padding: 1rem 0;
+    box-sizing: border-box;
+}
+
+#movieImage{
+    max-width: 50%;
+    height: auto;
+    top: 0;
+    margin-top: 1rem;
+    border-radius: 8px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.text__details{
+    padding: 0 1rem;
+    text-align: left;
+}
+
+#title{
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 38px;
+    margin: 2rem 0;
+    
+}
+
+.info{
+    display: flex;
+    justify-content: left;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.info li{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+}
+
+.rating{
+    display: flex; 
+}
+
+.circularProgressbar{
+    width: 4rem;
+    font-weight: 700;
+    margin: 2rem 0;
+}
+
+.rating-text{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+}
+
+.overview{
+    text-align: left;
+}
+
+.overview h4{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.overview p{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #DDDDDD;
+    letter-spacing: -0.005em;
+}
+.credits{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: left;
+    list-style: none;
+    padding: 0;
+    overflow: auto;
+    max-height: 150px;
+    scrollbar-width: none;
+}
+
+.credits::-webkit-scrollbar{
+    width: 0;
+}
+
+@media (min-width: 800px){
+    .details{
+        display: flex;
+        padding: 0 5vw 1rem 5vw;
+    }
+    
+    #movieImage{
+        max-height: 500px;
+        position: relative;
+        top: 50px;
+    }
+
+    .text__details{
+        padding: 0 3rem;
+    }
+    
+    #title{
+        text-align: left;
+        margin: 3rem 0 0 0 ;
+    }
+    
+    .info{
+        display: flex;
+        justify-content: left;
+        flex-direction: row;
+        padding: 0;
+        margin: 0;
+        list-style:disc;
+    }
+    
+    .info li{
+        margin: 15px;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+    }
+    
+    #age-group{
+        list-style: none;
+        margin-left: 0;
+    }
+    
+    .rating{
+        display: flex; 
+    }
+    
+    .circularProgressbar{
+        width: 3rem;
+        margin: 0;
+    }
+
+    .credits{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}

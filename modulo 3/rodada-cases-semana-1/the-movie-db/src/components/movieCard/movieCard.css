@@ -1,0 +1,29 @@
+.movieCard{
+    text-align: left;
+    padding: 8px;
+    list-style: none;
+}
+
+.movieCard img{
+    width: 100%;
+}
+
+.movie__title{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #000000;
+    margin: 4px 0;
+}
+
+.movie__date{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 18px;
+    color: #646464;
+    margin: 0;
+}
