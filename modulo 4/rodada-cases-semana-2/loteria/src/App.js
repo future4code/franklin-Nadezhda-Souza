@@ -12,9 +12,9 @@ const AppS = styled.div`
 `
 
 const HeaderS = styled.div`
-  background-color: #6BEFA3;
+  background-color: ${props => props.color || '#6BEFA3'};
   width: 100%;
-  height: 50%;
+  min-height: 50%;
   text-align: center;
   padding: 2rem 1rem;
   box-sizing: border-box;
@@ -27,7 +27,6 @@ const HeaderS = styled.div`
     align-items: center;
     justify-content: center;
     margin: auto;
-
   }
 
   .select select {
@@ -38,6 +37,21 @@ const HeaderS = styled.div`
     -moz-appearance: none;
     appearance: none;
     width: 100%;
+  }
+
+  .logo{
+    display: flex;
+    justify-content: center;
+  }
+
+  #logo1{
+    width: 60px;
+  }
+
+  #logo2{
+    width: 60px;
+    position: relative;
+    right: 60px;
   }
 `
 
@@ -100,6 +114,11 @@ const DetailsS = styled.div`
 
 function App() {
   const [loterias, setLoterias] = useState([]);
+  const [concursos, setConcursos] = useState([]);
+  const [details, setDetails] = useState({id: 2359}); //corrigir
+  const [selectValue, setSelectValue] = useState();
+  const [color, setColor] = useState();
+
 
   const getLoterias = () => {
     axios.get('https://brainn-api-loterias.herokuapp.com/api/v1/loterias')
@@ -108,46 +127,83 @@ function App() {
     })
   }
 
+  const getConcursos = () => {
+    axios.get('https://brainn-api-loterias.herokuapp.com/api/v1/loterias-concursos')
+    .then((response) => {
+      setConcursos(response.data);
+    })
+  }
+
+  const getConcursosDetails = (id = concursos[0].concursoId) => {
+    axios.get(`https://brainn-api-loterias.herokuapp.com/api/v1/concursos/${id}`)
+    .then((response) => {
+      setDetails(response.data);
+    })
+  }
+
+  const handleSelect = (option) => {
+    setSelectValue(option);
+    concursos.map((concurso) => {
+      if(concurso.loteriaId == option){
+        getConcursosDetails(concurso.concursoId);
+      }
+    })
+    switch (option) {
+      case '0':
+        setColor('#6BEFA3');
+        break;
+      case '1':
+        setColor('#8666EF');
+        break;
+      case '2':
+        setColor('#DD7AC6');
+        break;
+      case '3':
+        setColor('#FFAB64');
+        break;
+      case '4':
+        setColor('#5AAD7D');
+        break;
+      case '5':
+        setColor('#BFAF83');
+        break;
+    }
+  }
+
   useState(() => {
     getLoterias();
-  }, [])
+    getConcursos();
+  }, []);
 
   return (
     <AppS>
-      <HeaderS>
+      <HeaderS color={color}>
         <div className='select'>
-          <select defaultValue={loterias[0].nome}>
-            {loterias.map((loteria) => {
+          <select defaultValue={selectValue} value={selectValue} onChange={(e) => handleSelect(e.target.value)}>
+            {loterias?.map((loteria) => {
               return(
-                <option value={loteria.nome}>{loteria.nome}</option>
+                <option key={loteria.id} value={loteria.id}>{loteria.nome}</option>
               )
             })}
           </select>
           <TiArrowSortedDown/>
         </div>
-        <img/>
-        <p>Concurso n° {4560}</p>
+        <div className='logo'>
+          <img id='logo1' src={require('./images/logo1.png')}/>
+          <img id='logo2' src={require('./images/logo2.png')}/>
+        </div>
+        
+        <p>Concurso n° {details.id}</p>
       </HeaderS>
       <DetailsS>
         <div className='bolinhas'>
-          <div className='bolinha'>
-            <p>06</p>
-          </div>
-          <div className='bolinha'>
-            <p>06</p>
-          </div>
-          <div className='bolinha'>
-            <p>06</p>
-          </div>
-          <div className='bolinha'>
-            <p>06</p>
-          </div>
-          <div className='bolinha'>
-            <p>06</p>
-          </div>
-          <div className='bolinha'>
-            <p>06</p>
-          </div>
+          {details.numeros.map((numero) => {
+            return (
+              <div className='bolinha'>
+                <p>{numero}</p>
+              </div>
+            )
+          })}
         </div>
         <p className='text'>Este sorteio é meramente ilustrativo e não possui nenhuma ligação com a CAIXA.</p>
       </DetailsS>
