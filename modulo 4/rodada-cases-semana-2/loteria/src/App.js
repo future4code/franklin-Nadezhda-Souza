@@ -1,57 +1,68 @@
 import './App.css';
 import styled from 'styled-components'
-import { TiArrowSortedDown } from "react-icons/ti";
 import { useState } from 'react';
 import axios from 'axios';
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const AppS = styled.div`
-  background-color:  #efefef;
+  background-color: ${props => props.color || '#6BEFA3'};
   width: 100vw;
   height: 100vh;
   overflow-x: hidden;
+  font-family: 'Montserrat', sans-serif;
 `
 
 const HeaderS = styled.div`
   background-color: ${props => props.color || '#6BEFA3'};
   width: 100%;
   min-height: 50%;
-  text-align: center;
-  padding: 2rem 1rem;
+  padding: 1rem;
   box-sizing: border-box;
-
-  .select{
-    background: yellow;
-    width: 100px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    justify-content: center;
-    margin: auto;
-  }
-
-  .select select {
-    background-color: transparent;
-    border-style: none;
-    outline: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    width: 100%;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
 
   .logo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .logo-image{
     display: flex;
     justify-content: center;
   }
 
   #logo1{
     width: 60px;
+    position: relative;
+    left: 30px;
+    margin: 8px 0;
   }
 
   #logo2{
     width: 60px;
     position: relative;
-    right: 60px;
+    right: 30px;
+    margin: 8px 0;
+  }
+
+  .title{
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 37px;
+    color: #FFFFFF;
+    margin: 8px 0;
+  }
+
+  .concurso{
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FFFFFF;
   }
 `
 
@@ -61,17 +72,19 @@ const DetailsS = styled.div`
   background-color:  #efefef;
   width: 200%;
   position: relative;
-  bottom: 70px;
   right: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: 70px;
+  padding-bottom: 30px;
   box-sizing: border-box;
+  min-height: 50%;
+  justify-content: space-between;
 
   .bolinhas{
     max-width: 100vw;
-    margin: 0 auto;
+    margin: 16px auto;
     padding: 4px;
     box-sizing: border-box;
     display: flex;
@@ -104,19 +117,25 @@ const DetailsS = styled.div`
 
   .text{
       max-width: 100vw;
-      margin: auto;
+      margin: 8px auto;
       padding: 4px;
       box-sizing: border-box;
       text-align: center;
-      margin: 0;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 21px;
+      text-align: center;
+      color: #000000;
+      position: relative;
+      bottom: 0;
     }
 `
 
 function App() {
   const [loterias, setLoterias] = useState([]);
   const [concursos, setConcursos] = useState([]);
-  const [details, setDetails] = useState({id: 2359}); //corrigir
-  const [selectValue, setSelectValue] = useState();
+  const [details, setDetails] = useState({id: 2359, numeros:[]}); //corrigir
+  const [title, setTitle] = useState('MEGA-SENA');
   const [color, setColor] = useState();
 
 
@@ -142,7 +161,11 @@ function App() {
   }
 
   const handleSelect = (option) => {
-    setSelectValue(option);
+    loterias.map((loteria) => {
+      if(loteria.id == option){
+        setTitle(loteria.nome.toUpperCase());
+      }
+    })
     concursos.map((concurso) => {
       if(concurso.loteriaId == option){
         getConcursosDetails(concurso.concursoId);
@@ -176,24 +199,23 @@ function App() {
   }, []);
 
   return (
-    <AppS>
+    <AppS color={color}>
       <HeaderS color={color}>
-        <div className='select'>
-          <select defaultValue={selectValue} value={selectValue} onChange={(e) => handleSelect(e.target.value)}>
+          <DropdownButton title={title} variant='light'>
             {loterias?.map((loteria) => {
-              return(
-                <option key={loteria.id} value={loteria.id}>{loteria.nome}</option>
-              )
-            })}
-          </select>
-          <TiArrowSortedDown/>
-        </div>
+                return(
+                    <Dropdown.Item eventKey={loteria.id} value={loteria.id} as="button" onClick={(e) => handleSelect(e.target.value)}>{loteria.nome.toUpperCase()}</Dropdown.Item>
+                )
+              })}
+          </DropdownButton>
         <div className='logo'>
-          <img id='logo1' src={require('./images/logo1.png')}/>
-          <img id='logo2' src={require('./images/logo2.png')}/>
+          <div className='logo-image'>
+            <img id='logo1' src={require('./images/logo1.png')}/>
+            <img id='logo2' src={require('./images/logo2.png')}/>
+          </div>
+          <p className='title'>{title}</p>
         </div>
-        
-        <p>Concurso n° {details.id}</p>
+        <p className='concurso'>Concurso n° {details.id}</p>
       </HeaderS>
       <DetailsS>
         <div className='bolinhas'>
