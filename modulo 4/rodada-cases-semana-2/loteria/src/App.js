@@ -12,6 +12,12 @@ const AppS = styled.div`
   height: 100vh;
   overflow-x: hidden;
   font-family: 'Montserrat', sans-serif;
+
+  @media (min-width: 800px) {
+   display: flex;
+   flex-direction: row; 
+   overflow-y: hidden;
+  }
 `
 
 const HeaderS = styled.div`
@@ -64,11 +70,14 @@ const HeaderS = styled.div`
     line-height: 17px;
     color: #FFFFFF;
   }
+
+  @media (min-width: 800px) {
+    padding: 5% 1rem;
+  }
 `
 
 const DetailsS = styled.div`
-  border-top-left-radius: 50%;
-  border-top-right-radius: 50%;
+  border-radius: 50% 50% 0 0;
   background-color:  #efefef;
   width: 200%;
   position: relative;
@@ -76,8 +85,7 @@ const DetailsS = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 70px;
-  padding-bottom: 30px;
+  padding: 70px 0 30px 0;
   box-sizing: border-box;
   min-height: 50%;
   justify-content: space-between;
@@ -91,6 +99,7 @@ const DetailsS = styled.div`
     flex-direction: row;
     flex-flow: row wrap;
     justify-content: center;
+    align-items: center;
   }
 
   .bolinha{
@@ -116,19 +125,33 @@ const DetailsS = styled.div`
   }
 
   .text{
-      max-width: 100vw;
-      margin: 8px auto;
-      padding: 4px;
-      box-sizing: border-box;
-      text-align: center;
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 21px;
-      text-align: center;
-      color: #000000;
-      position: relative;
-      bottom: 0;
+    max-width: 100vw;
+    margin: 8px auto;
+    padding: 4px;
+    box-sizing: border-box;
+    text-align: center;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    color: #000000;
+    position: relative;
+    bottom: 0;
+  }
+
+  @media (min-width: 800px) {
+    right: 0;
+    height: 200%;
+    align-self: center;
+    border-radius: 50% 0 0 50%;
+    padding: 50% 70px;
+    justify-content: center;
+
+    .text{
+      position: absolute;
+      bottom: 30%;
     }
+  }
 `
 
 function App() {
