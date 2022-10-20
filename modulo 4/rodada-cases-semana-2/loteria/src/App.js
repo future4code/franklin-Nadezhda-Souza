@@ -155,31 +155,38 @@ const DetailsS = styled.div`
     padding: 50% 80px;
     justify-content: center;
 
-    .bolinhas {
-      min-height: 360px;
-      overflow-y: auto;
-    }
-
     .text {
       position: absolute;
       bottom: 30%;
       max-width: 80%;
     }
   }
+
+  @media (max-width: 1000px) {
+    .bolinhas {
+      min-height: 300px;
+      overflow-y: auto;
+    }
+  }
 `;
 
 function App() {
   const [loterias, setLoterias] = useState([]);
-  const [concursos, setConcursos] = useState([]);
-  const [details, setDetails] = useState({ id: 2359, numeros: [] }); //corrigir
+ /*  const [concursos, setConcursos] = useState([]); */
+  const [details, setDetails] = useState({dezenas: []}); //corrigir
   const [title, setTitle] = useState("MEGA-SENA");
   const [color, setColor] = useState();
+
+  /* 
+  A api sugerida pelo case não está funcionando. Por este motivo estou utilizando outra api semelhante.
 
   const getLoterias = () => {
     axios
       .get("https://brainn-api-loterias.herokuapp.com/api/v1/loterias")
       .then((response) => {
         setLoterias(response.data);
+      }).catch(error => {
+        console.log(error);
       });
   };
 
@@ -190,6 +197,8 @@ function App() {
       )
       .then((response) => {
         setConcursos(response.data);
+      }).catch(error => {
+        console.log(error);
       });
   };
 
@@ -198,45 +207,75 @@ function App() {
       .get(`https://brainn-api-loterias.herokuapp.com/api/v1/concursos/${id}`)
       .then((response) => {
         setDetails(response.data);
+      }).catch(error => {
+        console.log(error);
+      });
+  }; */
+
+  const getLoterias = () => {
+    axios
+      .get("https://loteriascaixa-api.herokuapp.com/api")
+      .then((response) => {
+        setLoterias(response.data);
+      }).catch(error => {
+        console.log(error);
+      });
+  };
+
+  const getDetails = (id) => {
+    axios
+      .get(`https://loteriascaixa-api.herokuapp.com/api/${id}/latest`)
+      .then((response) => {
+        setDetails(response.data);
+        console.log(response.data);
+      }).catch(error => {
+        console.log(error);
       });
   };
 
   const handleSelect = (option) => {
     loterias.map((loteria) => {
-      if (loteria.id == option) {
-        setTitle(loteria.nome.toUpperCase());
+      if (loteria == option) {
+        setTitle(loteria.toUpperCase());
+        getDetails(option);
       }
     });
-    concursos.map((concurso) => {
-      if (concurso.loteriaId == option) {
-        getConcursosDetails(concurso.concursoId);
-      }
-    });
+
     switch (option) {
-      case "0":
+      case "mega-sena":
         setColor("#6BEFA3");
         break;
-      case "1":
+      case "quina":
         setColor("#8666EF");
         break;
-      case "2":
+      case "lotofacil":
         setColor("#DD7AC6");
         break;
-      case "3":
+      case "lotomania":
         setColor("#FFAB64");
         break;
-      case "4":
+      case "timemania":
         setColor("#5AAD7D");
         break;
-      case "5":
+      case "dia-de-sorte":
         setColor("#BFAF83");
+        break;
+      case "dupla-sena":
+        setColor("#79ABC9");
+        break;
+      case "super-sete":
+        setColor("#B270DB");
+        break;
+      case "loteria-federal":
+        setColor("#EE9395");
         break;
     }
   };
 
   useState(() => {
     getLoterias();
-    getConcursos();
+    /* getConcursos(); */
+    getDetails('mega-sena');
   }, []);
 
   return (
@@ -246,12 +285,12 @@ function App() {
           {loterias?.map((loteria) => {
             return (
               <Dropdown.Item
-                eventKey={loteria.id}
-                value={loteria.id}
+                eventKey={loteria}
+                value={loteria}
                 as="button"
                 onClick={(e) => handleSelect(e.target.value)}
               >
-                {loteria.nome.toUpperCase()}
+                {loteria.toUpperCase()}
               </Dropdown.Item>
             );
           })}
@@ -263,11 +302,11 @@ function App() {
           </div>
           <p className="title">{title}</p>
         </div>
-        <p className="concurso">Concurso n° {details.id}</p>
+        <p className="concurso">Concurso n° {details.concurso}</p>
       </HeaderS>
       <DetailsS>
         <div className="bolinhas">
-          {details.numeros.map((numero) => {
+          {details.dezenas.map((numero) => {
             return (
               <div className="bolinha">
                 <p>{numero}</p>
